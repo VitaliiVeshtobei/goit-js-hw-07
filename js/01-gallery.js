@@ -28,7 +28,7 @@ function createGallery(galleryItems) {
 
 function onClickPhoto(evt) {
   evt.preventDefault();
-  console.dir(evt.target.dataset.source);
+
   basicLightbox
     .create(
       `
