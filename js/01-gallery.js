@@ -3,15 +3,17 @@ import { galleryItems } from "./gallery-items.js";
 
 // console.log(createGallery(galleryItems));
 
-const galleryContainer = document.querySelector(".gallery");
+const galleryContainerRef = document.querySelector(".gallery");
 const cardMarkup = createGallery(galleryItems);
-galleryContainer.insertAdjacentHTML("beforeend", cardMarkup);
+galleryContainerRef.insertAdjacentHTML("beforeend", cardMarkup);
+
+galleryContainerRef.addEventListener("click", onClickPhoto);
 
 function createGallery(galleryItems) {
   return galleryItems
     .map(({ preview, original, description }) => {
       return `<div class="gallery__item">
-            <a class="gallery__link" href="large-image.jpg">
+            <a class="gallery__link" href="${original}">
               <img
                 class="gallery__image"
                 src="${preview}"
@@ -22,4 +24,9 @@ function createGallery(galleryItems) {
           </div>`;
     })
     .join("");
+}
+
+function onClickPhoto(evt) {
+  evt.preventDefault();
+  console.dir(evt.target.dataset.source);
 }
