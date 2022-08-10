@@ -1,8 +1,6 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
-// console.log(createGallery(galleryItems));
-
 const galleryContainerRef = document.querySelector(".gallery");
 const cardMarkup = createGallery(galleryItems);
 galleryContainerRef.insertAdjacentHTML("beforeend", cardMarkup);
@@ -28,8 +26,6 @@ function createGallery(galleryItems) {
 
 function onClickPhoto(evt) {
   evt.preventDefault();
-  // console.dir(evt);
-  // console.dir(evt.currentTarget);
 
   basicLightbox
     .create(
@@ -40,9 +36,10 @@ function onClickPhoto(evt) {
     .show();
 
   document.addEventListener("keydown", (event) => {
-    // console.log(event);
-    // console.dir(evt.target);
-    if (event.keyCode === 27) {
+    const modalRef = document.querySelector(".basicLightbox");
+
+    if (event.keyCode === 27 && modalRef !== null) {
+      modalRef.remove();
     }
   });
 }
