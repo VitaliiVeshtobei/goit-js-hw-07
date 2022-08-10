@@ -28,6 +28,8 @@ function createGallery(galleryItems) {
 
 function onClickPhoto(evt) {
   evt.preventDefault();
+  // console.dir(evt);
+  // console.dir(evt.currentTarget);
 
   basicLightbox
     .create(
@@ -36,4 +38,11 @@ function onClickPhoto(evt) {
 	`
     )
     .show();
+
+  document.addEventListener("keydown", (event) => {
+    // console.log(event);
+    // console.dir(evt.target);
+    if (event.keyCode === 27) {
+    }
+  });
 }
